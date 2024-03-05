@@ -1,0 +1,72 @@
+ #wrapper{
+    margin: 0px auto;
+    width: 650px;
+    
+}
+ul{
+    list-style-type: none;
+    padding: 0px;
+}
+li input:not(.subject){
+    width: 70px;
+}
+ul ul{
+    list-style-type: none;
+    margin: 0px;
+    margin-top: 20px;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+button{
+    margin-top: 20px;
+    margin-right: 40px;
+}
+ #name{
+    margin: 0px auto;
+} 
+.table p{
+    width:40px;
+    height: 20px;
+     background-color:#7f8fa6;
+    text-align:center;
+    padding-top:5px ;
+    margin: 5px;
+    color: white;
+}
+.table2 p{
+    width:40px;
+    min-height: 20px;
+    display: block;
+    /* background-color:#7f8fa6;    */
+    margin: 2px 0px 0px 5px;
+}
+.more{
+    margin-top:25px !important;
+}
+.table,.table2{
+    display: flex;
+    justify-content:space-between;
+}
+.table2{
+    position: relative;
+    left:45px;
+    top:-480px;   
+    
+}
+
+.table li div{
+    position: relative;
+    left:6px;
+    font-weight: bold;
+}
+.table li:last-child div{
+    position: relative;
+    left:12px !important;
+} 
+.a{
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    
+}
