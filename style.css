@@ -54,8 +54,8 @@ button{
     top:-480px;   
     
 }
-
 .table li div{
+    width:45px;
     position: relative;
     left:6px;
     font-weight: bold;
@@ -67,6 +67,9 @@ button{
 .a{
     background-color: red;
     width: 50px;
-    height: 50px;
-    
+    height: 50px;   
+}
+.run{
+    width:40px;
+    position: absolute;
 }

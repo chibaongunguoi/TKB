@@ -1,6 +1,147 @@
-var line=document.getElementById("line")
+var line=document.getElementById("line");
+var sche=document.getElementById("table");
 var object=[];
 var color=["#e67e22","#8e44ad","#f1c40f","#2ecc71"]
+
+function addsubject(string,place,pos){
+  let target=$("#table").children().eq(place)
+  let div=document.createElement("div")
+  div.className="run"
+  div.innerHTML=string
+  target.append(div)
+  setpos(place,pos);
+  target.children().eq(target.children().length-1).removeClass("run")
+  
+}
+
+
+function setpos(place,pos){
+  $(".run").css({top:-$(".run").position().top
+  +$(".table li").eq(place).children().eq(pos).position().top+4,left:"50px"})
+}
+function rendertable(){
+sche.innerHTML=`<li>
+<div>Thứ 2</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p class="more">6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p class="more">11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+</li>
+<li>
+<div>Thứ 3</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p class="more">6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p class="more">11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+</li>
+<li>
+<div>Thứ 4</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p class="more">6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p class="more">11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+</li>
+<li>
+<div>Thứ 5</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p class="more">6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p class="more">11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+</li>
+<li>
+<div>Thứ 6</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p class="more">6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p class="more">11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+</li>
+<li>
+<div>Thứ 7</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p class="more">6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p class="more">11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+</li>
+<li>
+<div>CN</div>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p class="more">6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p class="more">11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+</li>`;
+}
+
+
 document.getElementById("render").addEventListener("click",function(){
     let ul=document.createElement("ul")
     ul.innerHTML=`
@@ -37,30 +178,25 @@ document.getElementById("render").addEventListener("click",function(){
 })
 function addcolor(){
   let j=0,day,begin,end;
-
   for (i in object){
     day=parseInt(object[i].day)
     begin=parseInt(object[i].begin)
-    end=parseInt(object[i].day)
-    $(".table2 div").eq(day).children().eq(begin-1).text(object[i].subject)
-    $(".table2 div").eq(day).children().eq(begin-1).css("font-weight", "bold")
-    $(".table2 div").eq(day).children().eq(begin-1).css("font-size", "13px")
-    $(".table2 div").eq(day).children().eq(begin).text(object[i].room)
-    $(".table2 div").eq(day).children().eq(begin).css("font-size", "13px")
-    for (j=parseInt(object[i].begin);j<=parseInt(object[i].end);j++)
+    end=parseInt(object[i].end)
+    for (j=begin;j<=end;j++)
     {
-      
       $(".table li").eq(day).children().eq(j).css("background-color",color[parseInt(day/2)])
     }
+    addsubject(`${object[i].subject}<br>${object[i].room}`,day,begin)
   }
 }
 $("form").submit(function(){
-    console.log($(".subject").length)
+  rendertable();
+
     object=[]
     let i=0;
     for (i=0;i<$(".subject").length;i++)
     object.push({})
-    for (i=0;i<$(".subject").length;i++){
+    for (i=0;i<$(".subject").length;i++){  
     object[i].subject=$(".subject").eq(i).val()
     object[i].day=$(".select").eq(i).val()
     object[i].begin=$(".begin").eq(i).val()
@@ -68,10 +204,12 @@ $("form").submit(function(){
     object[i].room=$(".room").eq(i).val()
     }
     addcolor()
-console.log(object)
     return false
 })
 $("#submit").click(function(){
     $("form").submit();
 })
+
+
 $("form").submit();
+addsubject("Đại số tuyến tính",0,1)
