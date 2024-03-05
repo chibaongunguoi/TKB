@@ -207,4 +207,4 @@ $("form").submit(function(){
 $("#submit").click(function(){
     $("form").submit();
 })
-$("form").submit();
+
