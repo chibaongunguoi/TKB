@@ -13,11 +13,9 @@ function addsubject(string,place,pos){
   target.children().eq(target.children().length-1).removeClass("run")
   
 }
-
-
 function setpos(place,pos){
   $(".run").css({top:-$(".run").position().top
-  +$(".table li").eq(place).children().eq(pos).position().top+4,left:"50px"})
+  +$(".table li").eq(place).children().eq(pos).position().top+4+parseInt(pos/6)*20,left:"50px"})
 }
 function rendertable(){
 sche.innerHTML=`<li>
@@ -209,7 +207,4 @@ $("form").submit(function(){
 $("#submit").click(function(){
     $("form").submit();
 })
-
-
 $("form").submit();
-addsubject("Đại số tuyến tính",0,1)
