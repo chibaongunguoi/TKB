@@ -7,12 +7,22 @@
 .smallbox{
     width: 640px;
 }
+*{
+    font-family: "Roboto", sans-serif;
+    
+}
 ul{
     list-style-type: none;
     padding: 0px;
 }
 li input:not(.subject){
     width: 70px;
+}
+input{
+    font-size: 15px;
+}
+button{
+    font-size: 15px;
 }
 ul ul{
     list-style-type: none;
@@ -67,10 +77,11 @@ button{
     width:45px;
     position: relative;
     left:6px;
+    font-size: 14px;
 }
 .table li:last-child div:first-child{
     position: relative;
-    left:12px !important;
+    left:14px !important;
 } 
 .a{
     background-color: red;
