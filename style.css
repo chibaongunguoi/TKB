@@ -1,6 +1,7 @@
 #wrapper {
   margin: 0px auto;
   width: 1200px;
+  
 
   /* background-color: red;  */
 }
@@ -16,9 +17,11 @@ ul {
 }
 li input:not(.subject) {
   width: 90px;
+  
 }
 input {
   font-size: 24px;
+  margin-right: 60px;
 }
 button {
   font-size: 24px;
@@ -55,9 +58,7 @@ button {
 .table {
   display: flex;
   justify-content: space-between;
-  position: relative;
-  top: 100px;
-  margin-bottom: 400px;
+  margin-bottom: 300px;
 }
 /* .table2{
     position: relative;
@@ -95,7 +96,30 @@ button {
 }
 a {
   display: block;
-  margin-top: 1200px;
+  margin-top: 500px;
   font-size: 30px;
   /* text-decoration: none; */
+}
+.info{
+  width: 150px;
+  /* height: 30px; */
+display: block;
+padding-top: 20px;
+margin-right: 20px;
+font-size: 22px;
+
+
+}
+.info li{
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding-top: 7px;
+  margin: 5px;
+  text-align:right;
+}
+.bigtable{
+  width: 100%;
+  padding-top: 200px;
+  display: flex;
 }

@@ -89,7 +89,7 @@ function createtable(){
     return false
 }
 $("#submit").click(createtable)
-// $("#submit").click()
+ $("#submit").click()
 function renderrow(subject="",room="",day="",begin="",end=""){
   if (typeof subject=="object") subject=""
   let ul=document.createElement("ul")
@@ -117,8 +117,7 @@ function renderrow(subject="",room="",day="",begin="",end=""){
           </li>
           <button data-n=${count} class="del">xóa</button>
   `;
-  
-  // adddel()
+
   line.appendChild(ul)
   adddel()
   for(let i=count*5;i<=count*5+4;i++)
