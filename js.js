@@ -129,6 +129,7 @@ function renderrow(subject="",room="",day="",begin="",end=""){
   $("input").eq(i).focus(function(){
     pointer=parseInt(this.dataset.n)
   })
+  $("input").eq(count*5).focus()
   count+=1
 }
  
