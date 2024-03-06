@@ -9,38 +9,43 @@
   </head>
   <body>
     <div id="wrapper">
-      <form>
-        <ul id="line">
-             <!-- <ul>
-            <li>
-              <div>Môn học</div>
-              <input class="subject" type="text" value="Đại số tuyến tính" id="ff"/>
-            </li>
-            <li>
-              <div>Phòng học:</div>
-              <input type="text" class="room" value="F101" />
-            </li>
-            <li>
-              <div>Thứ:</div>
-              <input type="text" value="2" class="select">
-            </li>
-            <li>
-              <div>Từ tiết:</div>
-              <input type="text" class="begin" value="11" />
-            </li>
-            <li>
-              <div>Đến hết tiết:</div>
-              <input type="text" class="end" value="12" />
-            </li>
-          </ul>    -->
+      <ul id="line">
+        <ul>
+          <li>
+            <div>Môn học</div>
+            <input
+              class="subject"
+              type="text"
+              value="Đại số tuyến tính"
+              id="ff"
+            />
+          </li>
+          <li>
+            <div>Phòng học:</div>
+            <input type="text" class="room" value="F101" />
+          </li>
+          <li>
+            <div>Thứ:</div>
+            <input type="text" value="2" class="select" />
+          </li>
+          <li>
+            <div>Từ tiết:</div>
+            <input type="text" class="begin" value="11" />
+          </li>
+          <li>
+            <div>Đến hết tiết:</div>
+            <input type="text" class="end" value="12" />
+          </li>
+          <button class="delete" data-n="99">xóa</button>
         </ul>
-      </form>
+      </ul>
       <button id="render">Thêm môn học</button>
       <button id="submit">Nộp</button>
-      <ul class="table" id="table">
-      </ul>
+      <div class="smallbox">
+        <ul class="table" id="table"></ul>
       </div>
-    </div> 
+    </div>
+
     <script src="js.js"></script>
   </body>
 </html>

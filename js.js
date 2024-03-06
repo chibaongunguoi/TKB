@@ -2,7 +2,9 @@ var line=document.getElementById("line");
 var sche=document.getElementById("table");
 var object=[];
 var color=["#e67e22","#8e44ad","#f1c40f","#2ecc71"]
-// localStorage.clear()
+var count=0;
+localStorage.clear()
+
 loaddata()
 document.getElementById("render").addEventListener("click",renderrow)
 
@@ -12,7 +14,9 @@ function update(){
 function loaddata(){
   object=JSON.parse(localStorage.getItem("user"))
   object=object?object:[]
+  let i=-1;
   for (i in object){
+    count=i;
     renderrow(object[i].subject,object[i].room,object[i].day,object[i].begin,object[i].end)
   }
 }
@@ -30,131 +34,44 @@ function setpos(place,pos){
   $(".run").css({top:-$(".run").position().top
   +$(".table li").eq(place).children().eq(pos).position().top+4+parseInt(pos/6)*20,left:50})
 }
-function rendertable(){
-sche.innerHTML=`<li>
-<div>Thứ 2</div>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p class="more">6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p class="more">11</p>
-<p>12</p>
-<p>13</p>
-<p>14</p>
-</li>
-<li>
-<div>Thứ 3</div>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p class="more">6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p class="more">11</p>
-<p>12</p>
-<p>13</p>
-<p>14</p>
-</li>
-<li>
-<div>Thứ 4</div>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p class="more">6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p class="more">11</p>
-<p>12</p>
-<p>13</p>
-<p>14</p>
-</li>
-<li>
-<div>Thứ 5</div>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p class="more">6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p class="more">11</p>
-<p>12</p>
-<p>13</p>
-<p>14</p>
-</li>
-<li>
-<div>Thứ 6</div>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p class="more">6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p class="more">11</p>
-<p>12</p>
-<p>13</p>
-<p>14</p>
-</li>
-<li>
-<div>Thứ 7</div>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p class="more">6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p class="more">11</p>
-<p>12</p>
-<p>13</p>
-<p>14</p>
-</li>
-<li>
-<div>CN</div>
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p class="more">6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p class="more">11</p>
-<p>12</p>
-<p>13</p>
-<p>14</p>
-</li>`;
+
+function addcolor(){
+  let j=0,day,begin,end;
+  for (i in object){
+    day=parseInt(object[i].day)-2;
+    begin=parseInt(object[i].begin)
+    end=parseInt(object[i].end)
+    for (j=begin;j<=end;j++)
+    {
+      $(".table li").eq(day).children().eq(j).css("background-color",color[parseInt(day/2)])
+    }
+    addsubject(`<b>${object[i].subject}</b><br>${object[i].room}`,day,begin)
+  }
 }
+
+function createtable(){
+  rendertable();
+    object=[]
+    let i=0;
+    for (i=0;i<$(".subject").length;i++)
+    object.push({})
+    for (i=0;i<$(".subject").length;i++){  
+    object[i].subject=$(".subject").eq(i).val()
+    object[i].day=$(".select").eq(i).val()
+    object[i].begin=$(".begin").eq(i).val()
+    object[i].end=$(".end").eq(i).val()
+    object[i].room=$(".room").eq(i).val()
+    }
+    update()
+    addcolor()
+    return false
+}
+$("#submit").click(createtable)
 
 function renderrow(subject="",room="",day="",begin="",end=""){
   if (typeof subject=="object") subject=""
   let ul=document.createElement("ul")
+  ul.dataset.n=count;
   ul.innerHTML=`
   <li>
             <div>Môn học</div>
@@ -176,42 +93,148 @@ function renderrow(subject="",room="",day="",begin="",end=""){
             <div>Đến tiết:</div>
             <input type="text" class="end" value=${end}>
           </li>
+          <button data-n=${count} class="del">xóa</button>
   `;
+  
+  // adddel()
   line.appendChild(ul)
+  adddel()
+  count+=1
 }
-
-
-function addcolor(){
-  let j=0,day,begin,end;
-  for (i in object){
-    day=parseInt(object[i].day)-2;
-    begin=parseInt(object[i].begin)
-    end=parseInt(object[i].end)
-    for (j=begin;j<=end;j++)
-    {
-      $(".table li").eq(day).children().eq(j).css("background-color",color[parseInt(day/2)])
-    }
-    addsubject(`<b>${object[i].subject}</b><br>${object[i].room}`,day,begin)
-  }
-}
-$("form").submit(function(){
-  rendertable();
-    object=[]
+ 
+function adddel(){
+  $(".del").click(function(){
     let i=0;
-    for (i=0;i<$(".subject").length;i++)
-    object.push({})
-    for (i=0;i<$(".subject").length;i++){  
-    object[i].subject=$(".subject").eq(i).val()
-    object[i].day=$(".select").eq(i).val()
-    object[i].begin=$(".begin").eq(i).val()
-    object[i].end=$(".end").eq(i).val()
-    object[i].room=$(".room").eq(i).val()
+    let target=parseInt($(this).attr("data-n"))
+    console.log($("#line ul").eq(target).remove())
+    for ( i=target;i<$("#line ul").length;i++){
+    $("#line ul button").eq(i).attr("data-n",i)
     }
+    count=i;
+    object.splice(target,1)
     update()
-    addcolor()
-    return false
-})
-$("#submit").click(function(){
-    $("form").submit();
-})
-$("form").submit()
+  })
+  $(".del").removeClass("del")
+}
+
+function rendertable(){
+  sche.innerHTML=`<li>
+  <div>Thứ 2</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p class="more">6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p class="more">11</p>
+  <p>12</p>
+  <p>13</p>
+  <p>14</p>
+  </li>
+  <li>
+  <div>Thứ 3</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p class="more">6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p class="more">11</p>
+  <p>12</p>
+  <p>13</p>
+  <p>14</p>
+  </li>
+  <li>
+  <div>Thứ 4</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p class="more">6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p class="more">11</p>
+  <p>12</p>
+  <p>13</p>
+  <p>14</p>
+  </li>
+  <li>
+  <div>Thứ 5</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p class="more">6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p class="more">11</p>
+  <p>12</p>
+  <p>13</p>
+  <p>14</p>
+  </li>
+  <li>
+  <div>Thứ 6</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p class="more">6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p class="more">11</p>
+  <p>12</p>
+  <p>13</p>
+  <p>14</p>
+  </li>
+  <li>
+  <div>Thứ 7</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p class="more">6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p class="more">11</p>
+  <p>12</p>
+  <p>13</p>
+  <p>14</p>
+  </li>
+  <li>
+  <div>CN</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p class="more">6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+  <p>10</p>
+  <p class="more">11</p>
+  <p>12</p>
+  <p>13</p>
+  <p>14</p>
+  </li>`;
+  }
