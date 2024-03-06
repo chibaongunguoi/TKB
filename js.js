@@ -86,10 +86,11 @@ function createtable(){
     }
     update()
     addcolor()
+    $(".bigtable").show();
     return false
 }
 $("#submit").click(createtable)
- $("#submit").click()
+//  $("#submit").click()
 function renderrow(subject="",room="",day="",begin="",end=""){
   if (typeof subject=="object") subject=""
   let ul=document.createElement("ul")
