@@ -94,3 +94,10 @@ button{
 #line ul li div{
     font-size: 20px;
 }
+a{
+    display: block;
+    margin-top: 1200px;
+font-size: 30px;
+/* text-decoration: none; */
+
+    }
