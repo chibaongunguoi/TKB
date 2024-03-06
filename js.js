@@ -15,6 +15,7 @@ function loaddata(){
   object=JSON.parse(localStorage.getItem("user"))
   object=object?object:[]
   let i=-1;
+  if (object!=[])
   for (i in object){
     count=i;
     renderrow(object[i].subject,object[i].room,object[i].day,object[i].begin,object[i].end)
