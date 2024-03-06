@@ -4,17 +4,22 @@ var object=[];
 var color=["#e67e22","#8e44ad","#f1c40f","#2ecc71"]
 var count=0;
 var pointer;
+var maxl;
 //localStorage.clear()
  window.addEventListener("keyup",function(e){
-  pointer+=1
-   if(e.key=="Enter") {
+  if(e.key=="Enter"||e.key=="ArrowRight")
+    pointer+=1
+  else if (e.key=="ArrowLeft")
+  pointer-=1
+  if (pointer>=$("input").length) pointer=0
+  else if (pointer==-1) pointer=$("input").length-1
+
     $("input").eq(pointer).focus()
-   }
+   
  })
 function addinput(){
   $("input").focus(function(){
     pointer=this.dataset.n
-    console.log(pointer)
   })
 }
 
@@ -116,7 +121,9 @@ function renderrow(subject="",room="",day="",begin="",end=""){
   for(let i=count*5;i<=count*5+4;i++)
   $("input").eq(i).focus(function(){
     pointer=parseInt(this.dataset.n)
+
   })
+
   count+=1
 }
  
@@ -124,14 +131,19 @@ function adddel(){
   $(".del").click(function(){
     let i=0;
     let target=parseInt($(this).attr("data-n"))
-    console.log($("#line ul").eq(target).remove())
+    $("#line ul").eq(target).remove()
     for ( i=target;i<$("#line ul").length;i++){
     $("#line ul button").eq(i).attr("data-n",i)
     }
+    for ( i=target*5;i<$("#line ul").length*5-1;i++){
+      $("input").eq(i).attr("data-n",i)
+      }
     count=i;
+    
     object.splice(target,1)
     update()
   })
+  
   $(".del").removeClass("del")
 }
 
