@@ -4,16 +4,16 @@ var object=[];
 var color=["#e67e22","#8e44ad","#f1c40f","#2ecc71"]
 var count=0;
 var pointer;
-var maxl;
+var target;
 //localStorage.clear()
  window.addEventListener("keyup",function(e){
   if(e.key=="Enter"||e.key=="ArrowRight")
     pointer+=1
   else if (e.key=="ArrowLeft")
   pointer-=1
+  else return;
   if (pointer>=$("input").length) pointer=0
   else if (pointer==-1) pointer=$("input").length-1
-
     $("input").eq(pointer).focus()
    
  })
@@ -35,18 +35,18 @@ function loaddata(){
   let i=-1;
   if (object!=[])
   for (i in object){
-    count=i;
     renderrow(object[i].subject,object[i].room,object[i].day,object[i].begin,object[i].end)
   }
+  count=$("input").length/5
 }
 function addsubject(string,place,pos){
-  let target=$("#table").children().eq(place)
+  let run=$("#table").children().eq(place)
   let div=document.createElement("div")
   div.className="run"
   div.innerHTML=string
-  target.append(div)
+  run.append(div)
   setpos(place,pos);
-  target.children().eq(target.children().length-1).removeClass("run")
+  run.children().eq(run.children().length-1).removeClass("run")
 }
 
 function setpos(place,pos){
@@ -69,6 +69,8 @@ function addcolor(){
 }
 
 function createtable(){
+  for (let i=0;i<$("input").length;i++)
+  if ($("input").eq(i).val()=="") return;
   rendertable();
     object=[]
     let i=0;
@@ -121,9 +123,7 @@ function renderrow(subject="",room="",day="",begin="",end=""){
   for(let i=count*5;i<=count*5+4;i++)
   $("input").eq(i).focus(function(){
     pointer=parseInt(this.dataset.n)
-
   })
-
   count+=1
 }
  
@@ -138,7 +138,7 @@ function adddel(){
     for ( i=target*5;i<$("#line ul").length*5-1;i++){
       $("input").eq(i).attr("data-n",i)
       }
-    count=i;
+    count=-1;
     
     object.splice(target,1)
     update()
