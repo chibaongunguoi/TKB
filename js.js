@@ -191,7 +191,7 @@ function addcolor(){
     {
       $(".table li").eq(day).children().eq(j).css("background-color",color[parseInt(day/2)])
     }
-    addsubject(`${object[i].subject}<br>${object[i].room}`,day,begin)
+    addsubject(`<b>${object[i].subject}</b><br>${object[i].room}`,day,begin)
   }
 }
 $("form").submit(function(){

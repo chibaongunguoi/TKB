@@ -55,11 +55,16 @@ button{
     top:-480px;   
     
 }
-.table li div{
+.table li div:first-child{
     width:45px;
     position: relative;
     left:6px;
     font-weight: bold;
+}
+.table li div{
+    width:45px;
+    position: relative;
+    left:6px;
 }
 .table li:last-child div:first-child{
     position: relative;
