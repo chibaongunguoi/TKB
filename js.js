@@ -3,7 +3,20 @@ var sche=document.getElementById("table");
 var object=[];
 var color=["#e67e22","#8e44ad","#f1c40f","#2ecc71"]
 var count=0;
+var pointer;
 //localStorage.clear()
+ window.addEventListener("keyup",function(e){
+  pointer+=1
+   if(e.key=="Enter") {
+    $("input").eq(pointer).focus()
+   }
+ })
+function addinput(){
+  $("input").focus(function(){
+    pointer=this.dataset.n
+    console.log(pointer)
+  })
+}
 
 loaddata()
 document.getElementById("render").addEventListener("click",renderrow)
@@ -29,11 +42,11 @@ function addsubject(string,place,pos){
   target.append(div)
   setpos(place,pos);
   target.children().eq(target.children().length-1).removeClass("run")
-  
 }
+
 function setpos(place,pos){
   $(".run").css({top:-$(".run").position().top
-  +$(".table li").eq(place).children().eq(pos).position().top+4+parseInt(pos/6)*20,left:50})
++$(".table li").eq(place).children().eq(pos).position().top+4+parseInt(pos/6)*20,left:50})
 }
 
 function addcolor(){
@@ -76,23 +89,23 @@ function renderrow(subject="",room="",day="",begin="",end=""){
   ul.innerHTML=`
   <li>
             <div>Môn học</div>
-            <input class="subject"  type="text" value="${subject}" > 
+            <input data-n=${count*5+0} class="subject"  type="text" value="${subject}" > 
           </li>
           <li>
             <div>Phòng học:</div>
-            <input type="text" class="room" value=${room} >
+            <input data-n=${count*5+1} type="text" class="room" value=${room} >
           </li>
           <li>
             <div>Thứ:</div>
-            <input type="text" class="select" value=${day}>
+            <input data-n=${count*5+2} type="text" class="select" value=${day}>
           </li>
           <li>
             <div>Từ tiết:</div>
-            <input type="text" class="begin" value=${begin} >
+            <input data-n=${count*5+3} type="text" class="begin" value=${begin} >
           </li>
           <li>
             <div>Đến tiết:</div>
-            <input type="text" class="end" value=${end}>
+            <input data-n=${count*5+4} type="text" class="end" value=${end}>
           </li>
           <button data-n=${count} class="del">xóa</button>
   `;
@@ -100,6 +113,10 @@ function renderrow(subject="",room="",day="",begin="",end=""){
   // adddel()
   line.appendChild(ul)
   adddel()
+  for(let i=count*5;i<=count*5+4;i++)
+  $("input").eq(i).focus(function(){
+    pointer=parseInt(this.dataset.n)
+  })
   count+=1
 }
  
