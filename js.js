@@ -50,8 +50,13 @@ function addsubject(string,place,pos){
 }
 
 function setpos(place,pos){
+ if (pos==6)$(".run").css({top:-$(".run").position().top
+ +$(".table li").eq(place).children().eq(pos).position().top+24
+ ,left:48});
+ else
   $(".run").css({top:-$(".run").position().top
-+$(".table li").eq(place).children().eq(pos).position().top+4+parseInt(pos/6)*20,left:50})
++$(".table li").eq(place).children().eq(pos).position().top+4
+,left:48})
 }
 
 function addcolor(){
