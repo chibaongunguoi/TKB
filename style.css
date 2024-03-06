@@ -101,19 +101,16 @@ a {
   /* text-decoration: none; */
 }
 .info{
-  width: 90px;
+  width: 100px;
   /* height: 30px; */
 display: block;
-padding-top: 20px;
-margin-right: 20px;
+padding-top: 18px;
 font-size: 22px;
 display: none;
-
-
 }
 .info li{
   display: block;
-  width: 140px;
+  width: 150px;
   height: 30px;
   padding-top: 7px;
   margin: 5px;
