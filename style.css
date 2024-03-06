@@ -19,10 +19,10 @@ li input:not(.subject){
     width: 70px;
 }
 input{
-    font-size: 15px;
+    font-size: 18px;
 }
 button{
-    font-size: 15px;
+    font-size: 18px;
 }
 ul ul{
     list-style-type: none;
