@@ -93,7 +93,7 @@ function createtable(){
     return false
 }
 $("#submit").click(createtable)
-$("#submit").click()
+// $("#submit").click()
 function renderrow(subject="",room="",day="",begin="",end=""){
   if (typeof subject=="object") subject=""
   let ul=document.createElement("ul")
@@ -148,9 +148,10 @@ function adddel(){
     
     object.splice(target,1)
     update()
+    createtable()
   })
-  
   $(".del").removeClass("del")
+  
 }
 
 function rendertable(){
