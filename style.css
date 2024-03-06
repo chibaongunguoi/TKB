@@ -1,11 +1,11 @@
 #wrapper{
     margin: 0px auto;
-    width: 700px;
+    width: 900px;
 
      /* background-color: red;  */
 }
 .smallbox{
-    width: 640px;
+    width: 840px;
 }
 *{
     font-family: "Roboto", sans-serif;
@@ -40,8 +40,8 @@ button{
     margin: 0px auto;
 } 
 .table p{
-    width:40px;
-    height: 20px;
+    width:50px;
+    height: 30px;
      background-color:#7f8fa6;
     text-align:center;
     padding-top:7px ;
@@ -72,10 +72,10 @@ button{
     font-weight: bold;
 }
 .table li div{
-    width:45px;
+    width:70px;
     position: relative;
     left:6px;
-    font-size: 14px;
+    font-size: 16px;
 }
 .table li:last-child div:first-child{
     position: relative;

@@ -51,12 +51,12 @@ function addsubject(string,place,pos){
 
 function setpos(place,pos){
  if (pos==6||pos==11)$(".run").css({top:-$(".run").position().top
- +$(".table li").eq(place).children().eq(pos).position().top+24
- ,left:48});
+ +$(".table li").eq(place).children().eq(pos).position().top+25
+ ,left:60});
  else
   $(".run").css({top:-$(".run").position().top
 +$(".table li").eq(place).children().eq(pos).position().top+4
-,left:48})
+,left:60})
 }
 
 function addcolor(){
@@ -93,7 +93,7 @@ function createtable(){
     return false
 }
 $("#submit").click(createtable)
-
+$("#submit").click()
 function renderrow(subject="",room="",day="",begin="",end=""){
   if (typeof subject=="object") subject=""
   let ul=document.createElement("ul")
