@@ -86,7 +86,7 @@ function createtable(){
     }
     update()
     addcolor()
-    $(".bigtable").show();
+    $(".info").show();
     return false
 }
 $("#submit").click(createtable)
