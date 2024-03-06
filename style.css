@@ -1,103 +1,101 @@
-#wrapper{
-    margin: 0px auto;
-    width: 1100px;
+#wrapper {
+  margin: 0px auto;
+  width: 1200px;
 
-     /* background-color: red;  */
+  /* background-color: red;  */
 }
-.smallbox{
-    width: 860px;
+.smallbox {
+  width: 960px;
 }
-*{
-    font-family: "Roboto", sans-serif;
-    
+* {
+  font-family: "Roboto", sans-serif;
 }
-ul{
-    list-style-type: none;
-    padding: 0px;
+ul {
+  list-style-type: none;
+  padding: 0px;
 }
-li input:not(.subject){
-    width: 90px;
+li input:not(.subject) {
+  width: 90px;
 }
-input{
-    font-size: 24px;
+input {
+  font-size: 24px;
 }
-button{
-    font-size: 24px;
+button {
+  font-size: 24px;
 }
-ul ul{
-    list-style-type: none;
-    margin: 0px;
-    margin-top: 20px;
-    display: flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
+ul ul {
+  list-style-type: none;
+  margin: 0px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-button{
-    margin-top: 20px;
-    margin-right: 40px;
+button {
+  margin-top: 20px;
+  margin-right: 40px;
 }
- #name{
-    margin: 0px auto;
-} 
-.table p{
-    width:50px;
-    height: 30px;
-     background-color:#7f8fa6;
-    text-align:center;
-    padding-top:7px ;
-    margin: 5px;
-    color: white;
-    font-size: 20px;
+#name {
+  margin: 0px auto;
+}
+.table p {
+  width: 50px;
+  height: 30px;
+  background-color: #7f8fa6;
+  text-align: center;
+  padding-top: 7px;
+  margin: 5px;
+  color: white;
+  font-size: 20px;
 }
 
-.more{
-    margin-top:25px !important;
+.more {
+  margin-top: 25px !important;
 }
-.table{
-    display: flex;
-    justify-content:space-between;
-    position: relative;
-    top:100px;
-    margin-bottom:400px
+.table {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 100px;
+  margin-bottom: 400px;
 }
 /* .table2{
     position: relative;
     left:45px;
     top:-480px;     
 } */
-.table li div:first-child{
-    width:60px;
-    position: relative;
-    left:6px;
-    font-weight: bold;
-    font-size: 20px;
+.table li div:first-child {
+  width: 60px;
+  position: relative;
+  left: 6px;
+  font-weight: bold;
+  font-size: 20px;
 }
-.table li div{
-    width:90px;
-    position: relative;
-    left:6px;
-    font-size: 20px;
+.table li div {
+  width: 90px;
+  position: relative;
+  left: 6px;
+  font-size: 20px;
 }
-.table li:last-child div:first-child{
-    position: relative;
-    left:14px !important;
-} 
-.a{
-    background-color: red;
-    width: 50px;
-    height: 50px;   
+.table li:last-child div:first-child {
+  position: relative;
+  left: 14px !important;
 }
-.run{
-    width:40px;
-    position: relative;
+.a {
+  background-color: red;
+  width: 50px;
+  height: 50px;
 }
-#line ul li div{
-    font-size: 20px;
+.run {
+  width: 40px;
+  position: relative;
 }
-a{
-    display: block;
-    margin-top: 1200px;
-font-size: 30px;
-/* text-decoration: none; */
-
-    }
+#line ul li div {
+  font-size: 20px;
+}
+a {
+  display: block;
+  margin-top: 1200px;
+  font-size: 30px;
+  /* text-decoration: none; */
+}

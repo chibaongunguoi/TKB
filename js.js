@@ -50,13 +50,9 @@ function addsubject(string,place,pos){
 }
 
 function setpos(place,pos){
- if (pos==6||pos==11)$(".run").css({top:-$(".run").position().top
- +$(".table li").eq(place).children().eq(pos).position().top+25
- ,left:60});
+ if (pos==6||pos==11)$(".run").css({top:-$(".run").position().top+$(".table li").eq(place).children().eq(pos).position().top+25,left:60});
  else
-  $(".run").css({top:-$(".run").position().top
-+$(".table li").eq(place).children().eq(pos).position().top+4
-,left:60})
+  $(".run").css({top:-$(".run").position().top+$(".table li").eq(place).children().eq(pos).position().top+4,left:60})
 }
 
 function addcolor(){
