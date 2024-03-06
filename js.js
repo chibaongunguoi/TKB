@@ -2,7 +2,20 @@ var line=document.getElementById("line");
 var sche=document.getElementById("table");
 var object=[];
 var color=["#e67e22","#8e44ad","#f1c40f","#2ecc71"]
+// localStorage.clear()
+loaddata()
+document.getElementById("render").addEventListener("click",renderrow)
 
+function update(){
+  localStorage.setItem("user",JSON.stringify(object))
+}
+function loaddata(){
+  object=JSON.parse(localStorage.getItem("user"))
+  object=object?object:[]
+  for (i in object){
+    renderrow(object[i].subject,object[i].room,object[i].day,object[i].begin,object[i].end)
+  }
+}
 function addsubject(string,place,pos){
   let target=$("#table").children().eq(place)
   let div=document.createElement("div")
@@ -15,7 +28,7 @@ function addsubject(string,place,pos){
 }
 function setpos(place,pos){
   $(".run").css({top:-$(".run").position().top
-  +$(".table li").eq(place).children().eq(pos).position().top+4+parseInt(pos/6)*20,left:"50px"})
+  +$(".table li").eq(place).children().eq(pos).position().top+4+parseInt(pos/6)*20,left:50})
 }
 function rendertable(){
 sche.innerHTML=`<li>
@@ -139,45 +152,39 @@ sche.innerHTML=`<li>
 </li>`;
 }
 
+function renderrow(subject="",room="",day="",begin="",end=""){
+  if (typeof subject=="object") subject=""
+  let ul=document.createElement("ul")
+  ul.innerHTML=`
+  <li>
+            <div>Môn học</div>
+            <input class="subject"  type="text" value="${subject}" > 
+          </li>
+          <li>
+            <div>Phòng học:</div>
+            <input type="text" class="room" value=${room} >
+          </li>
+          <li>
+            <div>Thứ:</div>
+            <input type="text" class="select" value=${day}>
+          </li>
+          <li>
+            <div>Từ tiết:</div>
+            <input type="text" class="begin" value=${begin} >
+          </li>
+          <li>
+            <div>Đến tiết:</div>
+            <input type="text" class="end" value=${end}>
+          </li>
+  `;
+  line.appendChild(ul)
+}
 
-document.getElementById("render").addEventListener("click",function(){
-    let ul=document.createElement("ul")
-    ul.innerHTML=`
-    <li>
-              <div>Môn học</div>
-              <input class="subject" type="text" />
-            </li>
-            <li>
-              <div>Phòng học:</div>
-              <input type="text" class="room" />
-            </li>
-            <li>
-              <div>Thứ:</div>
-              <select class="select">
-                <option value="0">Thứ 2</option>
-                <option value="1">Thứ 3</option>
-                <option value="2">Thứ 4</option>
-                <option value="3">Thứ 5</option>
-                <option value="4">Thứ 6</option>
-                <option value="5">Thứ 7</option>
-                <option value="6">Chủ nhật</option>
-              </select>
-            </li>
-            <li>
-              <div>Từ tiết:</div>
-              <input type="text" class="begin" />
-            </li>
-            <li>
-              <div>Đến tiết:</div>
-              <input type="text" class="end" />
-            </li>
-    `;
-    line.appendChild(ul)
-})
+
 function addcolor(){
   let j=0,day,begin,end;
   for (i in object){
-    day=parseInt(object[i].day)
+    day=parseInt(object[i].day)-2;
     begin=parseInt(object[i].begin)
     end=parseInt(object[i].end)
     for (j=begin;j<=end;j++)
@@ -189,7 +196,6 @@ function addcolor(){
 }
 $("form").submit(function(){
   rendertable();
-
     object=[]
     let i=0;
     for (i=0;i<$(".subject").length;i++)
@@ -201,10 +207,11 @@ $("form").submit(function(){
     object[i].end=$(".end").eq(i).val()
     object[i].room=$(".room").eq(i).val()
     }
+    update()
     addcolor()
     return false
 })
 $("#submit").click(function(){
     $("form").submit();
 })
-
+$("form").submit()
