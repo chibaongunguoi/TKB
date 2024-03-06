@@ -1,11 +1,11 @@
 #wrapper{
     margin: 0px auto;
-    width: 900px;
+    width: 1100px;
 
      /* background-color: red;  */
 }
 .smallbox{
-    width: 840px;
+    width: 860px;
 }
 *{
     font-family: "Roboto", sans-serif;
