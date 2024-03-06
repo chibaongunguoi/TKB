@@ -47,20 +47,18 @@ button{
     padding-top:5px ;
     margin: 5px;
     color: white;
+
 }
-.table2 p{
-    width:40px;
-    min-height: 20px;
-    display: block;
-    /* background-color:#7f8fa6;    */
-    margin: 2px 0px 0px 5px;
-}
+
 .more{
     margin-top:25px !important;
 }
-.table,.table2{
+.table{
     display: flex;
     justify-content:space-between;
+    position: relative;
+    top:100px;
+    margin-bottom:400px
 }
 /* .table2{
     position: relative;
