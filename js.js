@@ -50,9 +50,10 @@ function addsubject(string,place,pos){
 }
 
 function setpos(place,pos){
- if (pos==6)$(".run").css({top:-$(".run").position().top
+ if (pos==6||pos==11)$(".run").css({top:-$(".run").position().top
  +$(".table li").eq(place).children().eq(pos).position().top+24
  ,left:48});
+ 
  else
   $(".run").css({top:-$(".run").position().top
 +$(".table li").eq(place).children().eq(pos).position().top+4
@@ -116,7 +117,7 @@ function renderrow(subject="",room="",day="",begin="",end=""){
             <input data-n=${count*5+3} type="text" class="begin" value=${begin} >
           </li>
           <li>
-            <div>Đến tiết:</div>
+            <div>Đến hết tiết:</div>
             <input data-n=${count*5+4} type="text" class="end" value=${end}>
           </li>
           <button data-n=${count} class="del">xóa</button>
