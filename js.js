@@ -3,7 +3,7 @@ var sche=document.getElementById("table");
 var object=[];
 var color=["#e67e22","#8e44ad","#f1c40f","#2ecc71"]
 var count=0;
-localStorage.clear()
+//localStorage.clear()
 
 loaddata()
 document.getElementById("render").addEventListener("click",renderrow)
